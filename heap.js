@@ -3,9 +3,7 @@ var Algorithm = Algorithm || {};
 Algorithm.Heap = function()
 {
     this.array = [];
-    this.size = 0;
 };
-
 
 Algorithm.Heap.prototype.siftUp = function(i)
 {
@@ -25,10 +23,10 @@ Algorithm.Heap.prototype.siftUp = function(i)
 
 Algorithm.Heap.prototype.siftDown = function(i)
 {
-    if(i * 2 >= this.size)
+    if(i * 2 >= this.array.length)
         return;
     var child = i * 2;
-    if(child + 1 < this.size)
+    if(child + 1 < this.array.length)
     {
         if(this.array[child] < this.array[child+1])
             child++;
@@ -44,32 +42,23 @@ Algorithm.Heap.prototype.siftDown = function(i)
 
 Algorithm.Heap.prototype.push = function(e)
 {
-    if(this.size == this.array.length)
-    {
-        this.array.push(e);
-    }
-    else
-    {
-        this.array[this.size] = e;
-    }
-    this.size++;
-    this.siftUp(this.size - 1);
+    this.array.push(e);
+    this.siftUp(this.array.length - 1);
 };
 
 Algorithm.Heap.prototype.pop = function()
 {
-    if(this.size == 0)
+    if(this.array.length == 0)
         return;
     var e = this.array[0];
-    this.size--;
-    this.array[0] = this.array[this.size];
+    this.array[0] = this.array.pop();
     this.siftDown(0);
     return e;
 };
 
 Algorithm.Heap.prototype.isEmpty = function()
 {
-    return this.size == 0;
+    return this.array.length == 0;
 };
 
 
@@ -77,7 +66,6 @@ Algorithm.Heap.prototype.isEmpty = function()
 Algorithm.MinHeap = function()
 {
     this.array = [];
-    this.size = 0;
 };
 
 
@@ -99,10 +87,10 @@ Algorithm.MinHeap.prototype.siftUp = function(i)
 
 Algorithm.MinHeap.prototype.siftDown = function(i)
 {
-    if(i * 2 >= this.size)
+    if(i * 2 >= this.array.length)
         return;
     var child = i * 2;
-    if(child + 1 < this.size)
+    if(child + 1 < this.array.length)
     {
         if(this.array[child] > this.array[child+1])
             child++;
@@ -118,30 +106,22 @@ Algorithm.MinHeap.prototype.siftDown = function(i)
 
 Algorithm.MinHeap.prototype.push = function(e)
 {
-    if(this.size == this.array.length)
-    {
-        this.array.push(e);
-    }
-    else
-    {
-        this.array[this.size] = e;
-    }
-    this.size++;
-    this.siftUp(this.size - 1);
+    this.array.push(e);
+    this.siftUp(this.array.length - 1);
 };
 
 Algorithm.MinHeap.prototype.pop = function()
 {
-    if(this.size == 0)
+    if(this.array.length == 0)
         return;
     var e = this.array[0];
-    this.size--;
-    this.array[0] = this.array[this.size];
+    this.array[0] = this.array.pop();
     this.siftDown(0);
     return e;
 };
 
 Algorithm.MinHeap.prototype.isEmpty = function()
 {
-    return this.size == 0;
+    return this.array.length == 0;
 };
+
