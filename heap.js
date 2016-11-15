@@ -9,7 +9,7 @@ Algorithm.Heap.prototype.siftUp = function(i)
 {
     if(i <= 0)
         return;
-    var parent = Math.floor(i / 2);
+    var parent = Math.floor( (i - 1) / 2);
     
     if (this.array[parent] < this.array[i])
     {
@@ -25,7 +25,7 @@ Algorithm.Heap.prototype.siftDown = function(i)
 {
     if(i * 2 >= this.array.length)
         return;
-    var child = i * 2;
+    var child = (i * 2) + 1;
     if(child + 1 < this.array.length)
     {
         if(this.array[child] < this.array[child+1])
@@ -51,7 +51,8 @@ Algorithm.Heap.prototype.pop = function()
     if(this.array.length == 0)
         return;
     var e = this.array[0];
-    this.array[0] = this.array.pop();
+    this.array[0] = this.array[this.array.length - 1]; 
+    this.array.pop();
     this.siftDown(0);
     return e;
 };
@@ -73,7 +74,7 @@ Algorithm.MinHeap.prototype.siftUp = function(i)
 {
     if(i <= 0)
         return;
-    var parent = Math.floor(i / 2);
+    var parent = Math.floor( (i - 1) / 2);
     
     if (this.array[parent] > this.array[i])
     {
@@ -89,7 +90,7 @@ Algorithm.MinHeap.prototype.siftDown = function(i)
 {
     if(i * 2 >= this.array.length)
         return;
-    var child = i * 2;
+    var child = (i * 2) + 1;
     if(child + 1 < this.array.length)
     {
         if(this.array[child] > this.array[child+1])
@@ -115,7 +116,8 @@ Algorithm.MinHeap.prototype.pop = function()
     if(this.array.length == 0)
         return;
     var e = this.array[0];
-    this.array[0] = this.array.pop();
+    this.array[0] = this.array[this.array.length - 1]; 
+    this.array.pop();
     this.siftDown(0);
     return e;
 };
