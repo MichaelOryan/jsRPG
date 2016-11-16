@@ -2,7 +2,7 @@ var RPG = RPG || {};
 
 RPG.RPGNames = [];
 // First names
-RPG.RPGNames[0] = ["Pizza", "Michael", "Bitey"];
+RPG.RPGNames[0] = ["Stuart", "Michael", "John", "Larry"];
 
 // Last names
 
@@ -48,3 +48,25 @@ RPG.genName = function(names)
     }
     return name;
 };
+
+RPG.nameFrom = function (nameList)
+{
+    var tokens = new Array();
+    for(i in nameList)
+    {
+        console.log(nameList[i]);
+        var newTokens = nameList[i].tokens("aeiouAEIOU");
+        console.log(newTokens);
+        tokens = tokens.concat(newTokens);
+        
+        console.log(tokens);
+    }
+    var name = "";
+    for(var i = 0; i < Algorithm.rand(10) +3; i++)
+    {
+        name += Algorithm.pickRandom(tokens);
+    }
+    name = name.toLowerCase();
+    console.log(name);
+    return "name";
+}
