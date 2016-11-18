@@ -1,4 +1,4 @@
-var Algorithm = Algorithm || {};
+var Util = Util || {};
 
 Algorithm.rand = function(n)
 {

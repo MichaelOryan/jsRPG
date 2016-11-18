@@ -85,7 +85,7 @@ Algorithm.Heap.prototype.siftDown = function(i)
 	            child++;
 	    }
 
-	    // Swap with largest child if child is larger than parent
+	    // Swap with largest child if child is before than parent
 	    if(this.inOrder(this.array[child], this.array[parent]))
 	    {
 	        var tmp = this.array[parent];
